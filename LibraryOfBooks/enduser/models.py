@@ -6,17 +6,20 @@ PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 
 class Book(models.Model):
+    class Meta:
+        unique_together = ('title', 'author')
+
     title = models.TextField(blank=False, null=False)
     author = models.ForeignKey('Author')
-    file_path = models.TextField(blank=True, null=True)
+    file_path = models.TextField(blank=True, null=True, unique=True)
     language = models.ForeignKey('Language')
-    release_date = models.DateField(blank=True, null=True)
-    posting_date = models.DateField(blank=True, null=True)
-    first_posted = models.DateField(blank=True, null=True)
-    last_updated = models.DateField(blank=True, null=True)
+    release_date = models.TextField(blank=True, null=True)
+    posting_date = models.TextField(blank=True, null=True)
+    first_posted = models.TextField(blank=True, null=True)
+    last_updated = models.TextField(blank=True, null=True)
     current_page = models.IntegerField(default=0, blank=False, null=False)
     content = models.TextField(blank=True, null=True)
-    next_page = models.TextField(blank=True, null=True)
+    next_page = models.TextField(default=1, blank=True, null=True)
 
     def get_title(self):
         return self.title
@@ -36,14 +39,14 @@ class Book(models.Model):
 
 
 class Author(models.Model):
-    name = models.TextField(blank=False, null=False)
+    name = models.TextField(default='N/A', blank=False, null=False, unique=True)
 
     def __str__(self):
         return self.name
 
 
 class Language(models.Model):
-    language = models.TextField(blank=True, null=True)
+    language = models.TextField(default='N/A', blank=False, null=False, unique=True)
 
 
 class Settings(models.Model):

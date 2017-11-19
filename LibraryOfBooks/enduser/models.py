@@ -38,6 +38,9 @@ class Book(models.Model):
 class Author(models.Model):
     name = models.TextField(blank=False, null=False)
 
+    def __str__(self):
+        return self.name
+
 
 class Language(models.Model):
     language = models.TextField(blank=True, null=True)

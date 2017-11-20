@@ -1,11 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello World</title>
-</head>
-<body>
-<h2>HELLO WORLD</h2>
+{% extends "base.html" %}
+{% load staticfiles %}
 
-</body>
-</html>
+{% block top %}
+<navbar class="navbar navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand">Library</a>
+        <!--<form class="form-inline">-->
+        <!--<input class="form-control mr-sm-2" type="search" placeholder="Search by name or author"-->
+        <!--aria-label="Search">-->
+        <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+        <!--</form>-->
+    </div>
+</navbar>
+{% endblock %}
+
+{% block sidebar %}
+<!-- Sidebar -->
+<h2>Search for books</h2>
+<hr>
+<form>
+    <div class="form-group">
+        <label for="email">By Name:</label>
+        <input type="email" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+        <label for="pwd">By Author:</label>
+        <input type="password" class="form-control" id="pwd">
+    </div>
+    <button type="submit" class="btn btn-default pull-right">Search</button>
+</form>
+{% endblock %}
+
+{% block content %}
+{% for book in books %}
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{ book.title }}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">{{ book.author }}</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Start</a>
+    <a href="#" class="card-link">Continue</a>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

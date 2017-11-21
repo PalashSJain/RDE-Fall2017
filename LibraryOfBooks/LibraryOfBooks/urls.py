@@ -23,6 +23,7 @@ from enduser import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home),
+    url(r'books/(?P<book_id>[0-9]+)/(?P<page_number>[0-9]+)$', views.show_page_number),
 ]
 
 if settings.DEBUG:

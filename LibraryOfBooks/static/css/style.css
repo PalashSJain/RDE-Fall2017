@@ -1,3 +1,7 @@
 .small-padding {
     margin: 5px;
 }
+
+.page {
+    white-space: pre;
+}

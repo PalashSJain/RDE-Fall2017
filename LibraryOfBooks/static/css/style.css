@@ -5,3 +5,7 @@
 .page {
     white-space: pre;
 }
+
+.white-text{
+    color: white;
+}

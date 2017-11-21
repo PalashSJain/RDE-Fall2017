@@ -9,7 +9,7 @@ def home(request):
     # return render(request, 'home.html')
 
 
-def show_page_number(request, book_id, page_number):
+def show_page(request, book_id, page_number):
     book = Book.objects.get(id=book_id)
     content = book.get_content(page_number)
     return render_to_response('book_page.html', {'content': content, 'book': book})

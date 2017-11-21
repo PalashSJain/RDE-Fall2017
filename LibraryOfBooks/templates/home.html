@@ -29,7 +29,7 @@
         {% if book.current_page != 0 %}
         <button class="btn btn-warning float-right">Continue reading from page {{ book.current_page|add:1 }}</button>
         {% endif %}
-        <button class="btn btn-success float-left">Start reading from page 1</button>
+        <a class="btn btn-success float-left white-text" href="/book/{{book.id}}/page/1">Start reading from page 1</a>
     </div>
 </div>
 {% endfor %}

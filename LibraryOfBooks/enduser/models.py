@@ -30,13 +30,13 @@ class Book(models.Model):
     def set_page_number(self, page_number=0):
         self.current_page = page_number
 
-    def get_content(self, page_number=0):
+    def get_content(self, page_number=1):
         content = self.content.split("\n")
         text = ""
         page_size = 50
         page_number = int(page_number)
-        start = page_number*page_size
-        end = (page_number+1)*page_size
+        start = (page_number-1)*page_size
+        end = (page_number)*page_size
         for line_number in range(start, end):
             text += content[line_number] + "\n"
         return text

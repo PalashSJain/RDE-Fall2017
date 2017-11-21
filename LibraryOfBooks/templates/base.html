@@ -5,38 +5,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello World</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://getbootstrap.com/dist/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <script src="https://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
 {% block top %}
-<navbar class="navbar navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand">Library</a>
-        <!--<form class="form-inline">-->
-        <!--<input class="form-control mr-sm-2" type="search" placeholder="Search by name or author"-->
-        <!--aria-label="Search">-->
-        <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-        <!--</form>-->
-    </div>
-</navbar>
+<header>
+      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+        <a class="navbar-brand" href="#">Library of Books</a>
+      </nav>
+</header>
 {% endblock %}
 
-<div class="container">
-    <br>
+<div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3">
+        <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
             {% block sidebar %}
             {% endblock %}
-        </div>
+        </nav>
 
-        <div class="col-lg-9">
+        <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 content">
             {% block content %}
             {% endblock %}
-        </div>
+        </main>
     </div>
 </div>
 </body>

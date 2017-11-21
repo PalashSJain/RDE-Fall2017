@@ -1,36 +1,38 @@
 {% extends "base.html" %}
 
 {% block sidebar %}
-<h6 class="text-muted">#{{book.id}}</h6>
-<h3>{{ book.title }}</h3>
-<h5 class="card-subtitle mb-2">{{book.author}}</h5>
-<hr>
-{% if book.language %}
-<div class="form-group">
-    <label for="bookLanguage">Language:</label>
-    <strong id="bookLanguage">{{ book.language }}</strong>
+<div class="">
+    <h6 class="text-muted">#{{book.id}}</h6>
+    <h3>{{ book.title }}</h3>
+    <h5 class="card-subtitle mb-2">{{book.author}}</h5>
+    <hr>
+    {% if book.language %}
+    <div class="form-group">
+        <label for="bookLanguage">Language:</label>
+        <strong id="bookLanguage">{{ book.language }}</strong>
+    </div>
+    {% endif %}
+    {% if book.release_date %}
+    <div class="form-group">
+        <label for="bookReleaseDate">Released On:</label>
+        <strong id="bookReleaseDate">{{ book.release_date }}</strong>
+    </div>
+    {% endif %}
+    {% if book.last_updated %}
+    <div class="form-group">
+        <label for="bookLastUpdatedOn">Last Updated On:</label>
+        <strong id="bookLastUpdatedOn">{{ book.last_updated }}</strong>
+    </div>
+    {% endif %}
 </div>
-{% endif %}
-{% if book.release_date %}
-<div class="form-group">
-    <label for="bookReleaseDate">Released On:</label>
-    <strong id="bookReleaseDate">{{ book.release_date }}</strong>
-</div>
-{% endif %}
-{% if book.last_updated %}
-<div class="form-group">
-    <label for="bookLastUpdatedOn">Last Updated On:</label>
-    <strong id="bookLastUpdatedOn">{{ book.last_updated }}</strong>
-</div>
-{% endif %}
 {% endblock %}
 
 {% block content %}
 <div class="card page">
-  <div class="card-body">
-    <p class="card-text">{{ content }}</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
+    <div class="card-body">
+        <p class="card-text">{{ content }}</p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>
 </div>
 {% endblock %}

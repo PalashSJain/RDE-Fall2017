@@ -26,7 +26,7 @@
         <label for="pwd">By Author:</label>
         <input type="password" class="form-control" id="pwd">
     </div>
-    <button type="submit" class="btn btn-default pull-right">Search</button>
+    <button type="submit" class="btn btn-primary float-left">Search</button>
 </form>
 {% endblock %}
 
@@ -39,11 +39,10 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
             content.</p>
         <hr>
-        <a href="#" class="card-link">Start reading!</a>
         {% if book.current_page != 0 %}
-        <p>Do you want to continue reading from page {{ book.current_page }}? <a href="#" class="card-link">Continue</a>
-        </p>
+        <button class="btn btn-warning float-right">Continue reading from page {{ book.current_page|add:1 }}</button>
         {% endif %}
+        <button class="btn btn-success float-left">Start reading from page 1</button>
     </div>
 </div>
 {% endfor %}

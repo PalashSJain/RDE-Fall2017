@@ -17,7 +17,6 @@ class Book(models.Model):
     posting_date = models.TextField(blank=True, null=True)
     first_posted = models.TextField(blank=True, null=True)
     last_updated = models.TextField(blank=True, null=True)
-    current_page = models.IntegerField(default=1, blank=False, null=False)
     content = models.TextField(blank=True, null=True)
     no_of_lines = models.IntegerField(default=1, blank=False, null=False)
 
@@ -26,9 +25,6 @@ class Book(models.Model):
 
     def get_author(self):
         return self.author
-
-    def set_page_number(self, page_number=1):
-        self.current_page = page_number
 
     def get_content(self, page_number=1):
         content = self.content.split("\n")

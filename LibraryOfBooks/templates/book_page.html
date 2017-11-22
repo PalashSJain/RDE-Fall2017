@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block sidebar %}
-<div class="">
+<div>
     <h3>{{ book.title }}</h3>
     <h5 class="card-subtitle mb-2">{{book.author}}</h5>
     <hr>
@@ -27,46 +27,67 @@
 {% endblock %}
 
 {% block content %}
-<div class="pagination">
-    <a href="/" class="text-info">Looking for another book?</a>
-</div>
-<div class="float-right">
-    <div class="pagination">
-        {% if book.current_page > 1 %}
-        <a href="/book/{{book.id}}/page/1" title="Go to first page">&lt;&lt;</a>
-        <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page">&lt;</a>
-        {% endif %}
+<div>
+    <div class="center">
+        <div class="pagination float-left">
+            <a href="/" class="text-info">Looking for another book?</a>
+        </div>
+        <div class="pagination">
+        <span class="{% if book.current_page > 1 %} visible {% else %} invisible {% endif %}">
+            <a href="/book/{{book.id}}/page/1" title="Go to first page">&lt;&lt;</a>
+            <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page">&lt;</a>
+        </span>
 
-        <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page {{book.current_page}} of
-            {{book.last_page_number}}</a>
+            <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page
+                {{book.current_page}} of
+                {{book.last_page_number}}</a>
 
-        {% if book.current_page < book.last_page_number %}
+            <span class="{% if book.current_page < book.last_page_number %} visible {% else %} invisible {% endif %}">
         <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page">&gt;</a>
         <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page">&gt;&gt;</a>
-        {% endif %}
+        </span>
+        </div>
+        <div class="pagination dropdown float-right">
+            Show
+            <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                50
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">50</a>
+                <a class="dropdown-item" href="#">55</a>
+                <a class="dropdown-item" href="#">60</a>
+                <a class="dropdown-item" href="#">65</a>
+                <a class="dropdown-item" href="#">70</a>
+                <a class="dropdown-item" href="#">75</a>
+            </div>
+            lines per page
+        </div>
     </div>
-</div>
-<div class="card page">
-    <div class="card-body">
-        <p class="card-text">{{ content }}</p>
+    <div class="card page">
+        <div class="card-body">
+            <p class="card-text">{{ content }}</p>
+        </div>
     </div>
-</div>
-<p>
-<div class="center">
-    <div class="pagination">
-        {% if book.current_page > 1 %}
-        <a href="/book/{{book.id}}/page/1" title="Go to first page">&lt;&lt;</a>
-        <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page">&lt;</a>
-        {% endif %}
+    <p>
+    <div class="center">
+        <div class="pagination ">
+        <span class="{% if book.current_page > 1 %} visible {% else %} invisible {% endif %}">
+            <a href="/book/{{book.id}}/page/1" title="Go to first page">&lt;&lt;</a>
+            <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page">&lt;</a>
+        </span>
 
-        <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page {{book.current_page}} of
-            {{book.last_page_number}}</a>
+            <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page
+                {{book.current_page}} of
+                {{book.last_page_number}}</a>
 
-        {% if book.current_page < book.last_page_number %}
+            <span class="{% if book.current_page < book.last_page_number %} visible {% else %} invisible {% endif %}">
         <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page">&gt;</a>
         <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page">&gt;&gt;</a>
-        {% endif %}
+        </span>
+        </div>
     </div>
+    </p>
 </div>
-</p>
 {% endblock %}

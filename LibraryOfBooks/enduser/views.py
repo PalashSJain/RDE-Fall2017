@@ -12,6 +12,7 @@ def home(request):
 def show_page(request, book_id, page_number):
     book = Book.objects.get(id=book_id)
     book.set_page_number(int(page_number))
+    book.save()
     book.last_page_number = book.get_last_page_number()
     content = book.get_content(page_number)
     return render_to_response('book_page.html', {'content': content, 'book': book})

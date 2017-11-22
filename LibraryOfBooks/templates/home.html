@@ -24,8 +24,8 @@
         <div class="card-body">
             <h4 class="card-title">{{ book.title }}</h4>
             <p class="card-text text-muted">{{ book.author }}</p>
-            {% if book.current_page != 0 %}
-            <p><a class="text-info" href="/book/{{book.id}}/page/{{book.current_page|add:1}}">Continue reading from page {{ book.current_page|add:1 }}
+            {% if book.current_page > 1 %}
+            <p><a class="text-info" href="/book/{{book.id}}/page/{{book.current_page}}">Continue reading from page {{ book.current_page }}
             </a></p>
             {% endif %}
             <p><a class="text-success" href="/book/{{book.id}}/page/1">Start reading from page

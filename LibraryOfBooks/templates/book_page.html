@@ -27,7 +27,25 @@
 {% endblock %}
 
 {% block content %}
-<p><a href="/" class="text-warning">Go back to home page?</a></p>
+<div class="pagination">
+    <a href="/" class="text-info">Looking for another book?</a>
+</div>
+<div class="float-right">
+    <div class="pagination">
+        {% if book.current_page > 1 %}
+        <a href="/book/{{book.id}}/page/1" title="Go to first page">&lt;&lt;</a>
+        <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page">&lt;</a>
+        {% endif %}
+
+        <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page {{book.current_page}} of
+            {{book.last_page_number}}</a>
+
+        {% if book.current_page < book.last_page_number %}
+        <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page">&gt;</a>
+        <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page">&gt;&gt;</a>
+        {% endif %}
+    </div>
+</div>
 <div class="card page">
     <div class="card-body">
         <p class="card-text">{{ content }}</p>

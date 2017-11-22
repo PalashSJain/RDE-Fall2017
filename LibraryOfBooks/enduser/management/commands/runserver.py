@@ -52,6 +52,8 @@ def read_book(file):
     else:
         last_updated = None
 
+    no_of_lines = len(content.split("\n"))
+
     author, created = Author.objects.get_or_create(name=author)
 
     Book.objects.update_or_create(
@@ -63,7 +65,8 @@ def read_book(file):
         release_date=release_date,
         posting_date=posting_date,
         first_posted=first_posted,
-        last_updated=last_updated
+        last_updated=last_updated,
+        no_of_lines=no_of_lines
     )
 
 

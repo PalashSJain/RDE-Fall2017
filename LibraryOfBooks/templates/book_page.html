@@ -52,15 +52,15 @@
             <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false">
-                50
+                {{current_page_size}}
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">50</a>
-                <a class="dropdown-item" href="#">55</a>
-                <a class="dropdown-item" href="#">60</a>
-                <a class="dropdown-item" href="#">65</a>
-                <a class="dropdown-item" href="#">70</a>
-                <a class="dropdown-item" href="#">75</a>
+                <a class="dropdown-item" href="/changePageSize/{{book.id}}/50">50</a>
+                <a class="dropdown-item" href="/changePageSize/{{book.id}}/55">55</a>
+                <a class="dropdown-item" href="/changePageSize/{{book.id}}/60">60</a>
+                <a class="dropdown-item" href="/changePageSize/{{book.id}}/65">65</a>
+                <a class="dropdown-item" href="/changePageSize/{{book.id}}/70">70</a>
+                <a class="dropdown-item" href="/changePageSize/{{book.id}}/75">75</a>
             </div>
             lines per page
         </div>

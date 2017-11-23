@@ -26,10 +26,9 @@ class Book(models.Model):
     def get_author(self):
         return self.author
 
-    def get_content(self, page_number=1):
+    def get_content(self, page_number=1, page_size=50):
         content = self.content.split("\n")
         text = ""
-        page_size = 50
         page_number = int(page_number)
         start = (page_number - 1) * page_size
         end = page_number * page_size
@@ -39,8 +38,7 @@ class Book(models.Model):
             text += content[line_number] + "\n"
         return text
 
-    def get_last_page_number(self):
-        page_size = 50
+    def get_last_page_number(self, page_size=50):
         return math.ceil(int(self.no_of_lines) / page_size)
 
 
@@ -58,11 +56,3 @@ class Language(models.Model):
         return self.language
 
 
-class Settings(models.Model):
-    page_size = models.IntegerField(default=0, blank=False, null=False)
-
-    def set_page_size(self, page_size=50):
-        self.page_size = page_size
-
-    def get_page_size(self):
-        return self.page_size

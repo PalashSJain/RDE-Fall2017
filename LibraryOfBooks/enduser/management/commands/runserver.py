@@ -5,7 +5,7 @@ import re
 from django.core.management.commands.runserver import BaseRunserverCommand
 
 import Books
-from enduser.models import Book, Author, Language, Settings
+from enduser.models import Book, Author, Language
 
 
 def read_book(file):
@@ -79,12 +79,7 @@ def read_books():
     print("All books have been read...")
 
 
-def setup():
-    Settings.objects.update_or_create(page_size=50)
-
-
 class Command(BaseRunserverCommand):
     def inner_run(self, *args, **options):
         read_books()
-        setup()
         super(Command, self).inner_run(*args, **options)

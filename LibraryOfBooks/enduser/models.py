@@ -29,7 +29,6 @@ class Book(models.Model):
     def get_content(self, page_number=1, page_size=50):
         content = self.content.split("\n")
         text = ""
-        page_number = int(page_number)
         start = (page_number - 1) * page_size
         end = page_number * page_size
         if end > self.no_of_lines:

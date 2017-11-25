@@ -29,7 +29,7 @@ def home(request):
         books = Book.objects.all()
 
     if len(books) == 0:
-        return render(request, 'no-book-found.html', {'title' : title, 'author' : author})
+        return render(request, 'no-book-found.html', {'title': title, 'author': author})
 
     if request.session.__contains__('page_size'):
         current_page_size = int(request.session.get('page_size'))
@@ -48,14 +48,22 @@ def home(request):
 
 
 def show_page(request, book_id, page_number):
+    try:
+        book = Book.objects.get(id=book_id)
+    except Book.DoesNotExist:
+        return render(request, 'non-existant-book.html')
+
     if request.session.__contains__('page_size'):
         current_page_size = int(request.session.get('page_size'))
     else:
         current_page_size = 50
         request.session['page_size'] = 50
-    book = Book.objects.get(id=book_id)
+
     book.current_page = int(page_number)
     book.last_page_number = book.get_last_page_number(current_page_size)
+    if book.current_page > book.last_page_number:
+        return redirect('show_page', book_id=book_id, page_number=book.last_page_number)
+
     content = book.get_content(book.current_page, current_page_size)
     request.session[book.title] = (book.current_page - 1) * current_page_size
     return render_to_response('book_page.html',

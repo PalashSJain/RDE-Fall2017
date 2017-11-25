@@ -1,0 +1,12 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>Cannot find any book {% if title %}containing {{title}} in its title
+    {% if author %}and{% endif %}
+    {% endif %}
+    {% if author %}
+    written by {{author}}
+    {% endif %}
+    </h2>
+{% endblock %}

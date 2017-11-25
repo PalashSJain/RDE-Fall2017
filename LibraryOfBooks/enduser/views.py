@@ -28,6 +28,9 @@ def home(request):
     else:
         books = Book.objects.all()
 
+    if len(books) == 0:
+        return render(request, 'no-book-found.html', {'title' : title, 'author' : author})
+
     if request.session.__contains__('page_size'):
         current_page_size = int(request.session.get('page_size'))
     else:

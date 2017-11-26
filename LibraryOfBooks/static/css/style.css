@@ -129,6 +129,7 @@ input[type=number]::-webkit-outer-spin-button {
 .card {
     display: block;
     background: #f8f9fa73;
+    border: 1px dashed rgba(0,0,0,.1);
 }
 
 .bg-darker-than-light {

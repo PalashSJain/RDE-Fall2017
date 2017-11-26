@@ -2,6 +2,7 @@ import fnmatch
 import os
 import re
 
+from django.core.management import BaseCommand
 from django.core.management.commands.runserver import BaseRunserverCommand
 
 import Books
@@ -70,16 +71,11 @@ def read_book(file):
     )
 
 
-def read_books():
-    print("Starting to read books...")
-    files = os.listdir(os.path.dirname(Books.__file__))
-    for file in files:
-        if fnmatch.fnmatch(file, '*.txt'):
-            read_book(file)
-    print("All books have been read...")
-
-
-class Command(BaseRunserverCommand):
-    def inner_run(self, *args, **options):
-        read_books()
-        super(Command, self).inner_run(*args, **options)
+class Command(BaseCommand):
+    def handle(self, *args, **options):
+        print("Starting to read books...")
+        files = os.listdir(os.path.dirname(Books.__file__))
+        for file in files:
+            if fnmatch.fnmatch(file, '*.txt'):
+                read_book(file)
+        print("All books have been read...")

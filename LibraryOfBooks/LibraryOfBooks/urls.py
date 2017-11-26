@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name="home"),
-    url(r'book/(?P<book_id>[0-9]+)/page/(?P<page_number>[0-9]+)$', views.show_page, name="show_page"),
+    url(r'book/(?P<book_id>[0-9]+)/page/(?P<page_number>[\-0-9]+)$', views.show_page, name="show_page"),
     url(r'changePageSize/(?P<book_id>[0-9]+)/(?P<new_page_size>(50|55|60|65|70|75))$', views.change_page_size),
 ]
 

@@ -64,6 +64,9 @@ def show_page(request, book_id, page_number):
     if book.current_page > book.last_page_number:
         return redirect('show_page', book_id=book_id, page_number=book.last_page_number)
 
+    if book.current_page < 1:
+        return redirect('show_page', book_id=book_id, page_number=1)
+
     content = book.get_content(book.current_page, current_page_size)
     request.session[book.title] = (book.current_page - 1) * current_page_size
     return render_to_response('book_page.html',

@@ -9,9 +9,9 @@ class Book(models.Model):
     class Meta:
         unique_together = ('title', 'author')
 
-    title = models.TextField(blank=False, null=False)
+    title = models.CharField(blank=False, null=False, max_length=255)
     author = models.ForeignKey('Author')
-    file_path = models.TextField(blank=True, null=True, unique=True)
+    file_path = models.CharField(blank=True, null=True, unique=True, max_length=255)
     language = models.ForeignKey('Language')
     release_date = models.TextField(blank=True, null=True)
     posting_date = models.TextField(blank=True, null=True)
@@ -42,14 +42,14 @@ class Book(models.Model):
 
 
 class Author(models.Model):
-    name = models.TextField(default='N/A', blank=False, null=False, unique=True)
+    name = models.CharField(default='N/A', blank=False, null=False, unique=True, max_length=255)
 
     def __str__(self):
         return self.name
 
 
 class Language(models.Model):
-    language = models.TextField(default='N/A', blank=False, null=False, unique=True)
+    language = models.CharField(default='N/A', blank=False, null=False, unique=True, max_length=255)
 
     def __str__(self):
         return self.language

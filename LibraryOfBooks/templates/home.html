@@ -28,13 +28,13 @@
             <p>
                 <div class="pagination">
                     <a class="text-success" href="/book/{{book.id}}/page/1">
-                        <img src="{% static 'images/icons/bookmark.png' %}" height="20px" width="20px"> Start reading!
+                        <img src="{% static 'images/icons/bookmark.png' %}" class="icons"> Start reading!
                     </a>
                 </div>
                 {% if book.current_page > 1 %}
                 <div class="pagination">
                     <a class="text-info" href="/book/{{book.id}}/page/{{book.current_page}}">
-                        <img src="{% static 'images/icons/open-book.png' %}" height="20px" width="20px"> Cont. from page {{ book.current_page }}
+                        <img src="{% static 'images/icons/open-book.png' %}" class="icons"> Cont. from page {{ book.current_page }}
                     </a>
                 </div>
                 {% endif %}

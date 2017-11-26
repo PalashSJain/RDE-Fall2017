@@ -30,13 +30,13 @@
 {% block content %}
     <div>
         <div class="col-lg-3 pagination float-left">
-            <a href="/" class="text-dark"><img src="{% static 'images/icons/previous.png' %}" height="20px" width="20px"> Go back.</a>
+            <a href="/" class="text-dark"><img src="{% static 'images/icons/previous.png' %}" class="icons"> Go back.</a>
         </div>
         <div class="col-lg-6 pagination center">
             <div>
                 <span class="{% if book.current_page > 1 %} visible {% else %} invisible {% endif %}">
-                    <a href="/book/{{book.id}}/page/1" title="Go to first page"><img src="{% static 'images/icons/navigate-arrow-button-to-beginning.png' %}" height="20px" width="20px"></a>
-                    <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page"><img src="{% static 'images/icons/arrowhead-thin-outline-to-the-left.png' %}" height="20px" width="20px"></a>
+                    <a href="/book/{{book.id}}/page/1" title="Go to first page"><img src="{% static 'images/icons/navigate-arrow-button-to-beginning.png' %}" class="icons"></a>
+                    <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page"><img src="{% static 'images/icons/arrowhead-thin-outline-to-the-left.png' %}" class="icons"></a>
                 </span>
 
                     <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page
@@ -44,8 +44,8 @@
                         {{book.last_page_number}}</a>
 
                     <span class="{% if book.current_page < book.last_page_number %} visible {% else %} invisible {% endif %}">
-                <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page"><img src="{% static 'images/icons/arrow-point-to-right.png' %}" height="20px" width="20px"></a>
-                <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page"><img src="{% static 'images/icons/navigate-to-end.png' %}" height="20px" width="20px"></a>
+                <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page"><img src="{% static 'images/icons/arrow-point-to-right.png' %}" class="icons"></a>
+                <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page"><img src="{% static 'images/icons/navigate-to-end.png' %}" class="icons"></a>
                 </span>
             </div>
         </div>
@@ -74,8 +74,8 @@
     <div class="center">
         <div class="pagination">
         <span class="{% if book.current_page > 1 %} visible {% else %} invisible {% endif %}">
-            <a href="/book/{{book.id}}/page/1" title="Go to first page"><img src="{% static 'images/icons/navigate-arrow-button-to-beginning.png' %}" height="20px" width="20px"></a>
-            <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page"><img src="{% static 'images/icons/arrowhead-thin-outline-to-the-left.png' %}" height="20px" width="20px"></a>
+            <a href="/book/{{book.id}}/page/1" title="Go to first page"><img src="{% static 'images/icons/navigate-arrow-button-to-beginning.png' %}" class="icons"></a>
+            <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page"><img src="{% static 'images/icons/arrowhead-thin-outline-to-the-left.png' %}" class="icons"></a>
         </span>
 
             <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page
@@ -83,8 +83,8 @@
                 {{book.last_page_number}}</a>
 
             <span class="{% if book.current_page < book.last_page_number %} visible {% else %} invisible {% endif %}">
-        <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page"><img src="{% static 'images/icons/arrow-point-to-right.png' %}" height="20px" width="20px"></a>
-        <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page"><img src="{% static 'images/icons/navigate-to-end.png' %}" height="20px" width="20px"></a>
+        <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page"><img src="{% static 'images/icons/arrow-point-to-right.png' %}" class="icons"></a>
+        <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page"><img src="{% static 'images/icons/navigate-to-end.png' %}" class="icons"></a>
         </span>
         </div>
     </div>

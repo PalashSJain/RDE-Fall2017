@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('../fonts/Comfortaa-Bold.ttf');
+  src: local('../fonts/Comfortaa/Comfortaa-Bold.ttf')
+}
+
+@font-face {
+  font-family: 'LibreBaskerville';
+  src: url('../fonts/LibreBaskerville-Regular.ttf');
+  src: local('../fonts/abc.ttf')
+}
+
 .page {
     white-space: pre;
 }
@@ -139,4 +151,13 @@ input[type=number]::-webkit-outer-spin-button {
 .icons {
     height: 20px;
     width: 20px;
+}
+
+.navbar-brand{
+    font-family: 'Comfortaa', cursive;
+    letter-spacing: 1.5px;
+}
+
+.card-text {
+    font-family: 'LibreBaskerville', serif;
 }

@@ -28,3 +28,5 @@ urlpatterns = [
     url(r'changePageSize/(?P<book_id>[0-9]+)/(?P<new_page_size>(50|55|60|65|70|75))$', views.change_page_size),
 ]
 
+handler404 = views.response_code_404
+handler500 = views.response_code_500

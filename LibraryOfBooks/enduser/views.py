@@ -29,7 +29,7 @@ def home(request):
         books = Book.objects.all()
 
     if len(books) == 0:
-        return render(request, 'no-book-found.html', {'title': title, 'author': author})
+        return render(request, '400_no-book-found.html', {'title': title, 'author': author})
 
     if request.session.__contains__('page_size'):
         current_page_size = int(request.session.get('page_size'))
@@ -51,7 +51,7 @@ def show_page(request, book_id, page_number):
     try:
         book = Book.objects.get(id=book_id)
     except Book.DoesNotExist:
-        return render(request, 'non-existant-book.html')
+        return render(request, '500_non-existant-book.html')
 
     if request.session.__contains__('page_size'):
         current_page_size = int(request.session.get('page_size'))
@@ -80,3 +80,11 @@ def change_page_size(request, book_id, new_page_size):
     page_number = math.floor(current_first_line / new_page_size) + 1
     request.session['page_size'] = new_page_size
     return redirect('show_page', book_id=book_id, page_number=page_number)
+
+
+def response_code_404(request):
+    return render_to_response('404.html')
+
+
+def response_code_500(request):
+    return render_to_response('500.html')

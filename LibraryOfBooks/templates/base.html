@@ -20,29 +20,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
-
 <body>
 
 {% block top %}
-<header>
     <nav class="navbar navbar-expand-md navbar-light fixed-top bg-darker-than-light">
+        <div class="container">
         <a class="navbar-brand" href="http://www.rde.org/codingchallenge/" target="_blank">RDE Coding Challenge
             Fall'17 | LIBRARY OF BOOKS</a>
+        </div>
     </nav>
-</header>
 {% endblock %}
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+        <div class="col-sm-4 col-md-3 d-none d-sm-block bg-light">
             {% block sidebar %}
             {% endblock %}
-        </nav>
+        </div>
 
-        <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 content">
+        <div class="col-sm-8 ml-sm-auto col-md-9 pt-3">
             {% block content %}
             {% endblock %}
-        </main>
+        </div>
     </div>
 </div>
 
@@ -57,6 +56,12 @@
         <div class="d-none">Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     </div>
 </footer>
+
+
+<script>
+    {% block javascript %}
+    {% endblock %}
+</script>
 
 </body>
 </html>

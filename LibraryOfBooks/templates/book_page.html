@@ -2,90 +2,79 @@
 {% load static %}
 
 {% block sidebar %}
-<div>
-    <h3>{{ book.title }}</h3>
-    <h5 class="card-subtitle mb-2">{{book.author}}</h5>
-    <hr>
-    {% if book.language %}
-    <div class="form-group">
-        <label for="bookLanguage">Language:</label>
-        <strong id="bookLanguage">{{ book.language }}</strong>
-    </div>
-    {% endif %}
-    {% if book.release_date %}
-    <div class="form-group">
-        <label for="bookReleaseDate">Released On:</label>
-        <strong id="bookReleaseDate">{{ book.release_date }}</strong>
-    </div>
-    {% endif %}
-    {% if book.last_updated %}
-    <div class="form-group">
-        <label for="bookLastUpdatedOn">Last Updated On:</label>
-        <strong id="bookLastUpdatedOn">{{ book.last_updated }}</strong>
-    </div>
-    {% endif %}
+<h3>{{ book.title }}</h3>
+<h5 class="card-subtitle mb-2">{{book.author}}</h5>
+<hr>
+{% if book.language %}
+<div class="form-group">
+    <label for="bookLanguage">Language:</label>
+    <strong id="bookLanguage">{{ book.language }}</strong>
 </div>
+{% endif %}
+{% if book.release_date %}
+<div class="form-group">
+    <label for="bookReleaseDate">Released On:</label>
+    <strong id="bookReleaseDate">{{ book.release_date }}</strong>
+</div>
+{% endif %}
+{% if book.last_updated %}
+<div class="form-group">
+    <label for="bookLastUpdatedOn">Last Updated On:</label>
+    <strong id="bookLastUpdatedOn">{{ book.last_updated }}</strong>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block content %}
-    <div>
-        <div class="col-lg-3 pagination float-left">
-            <a href="/" class="text-dark"><img src="{% static 'images/icons/previous.png' %}" class="icons"> Go back.</a>
-        </div>
-        <div class="col-lg-6 pagination center">
-            <div>
-                <span class="{% if book.current_page > 1 %} visible {% else %} invisible {% endif %}">
-                    <a href="/book/{{book.id}}/page/1" title="Go to first page"><img src="{% static 'images/icons/navigate-arrow-button-to-beginning.png' %}" class="icons"></a>
-                    <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page"><img src="{% static 'images/icons/arrowhead-thin-outline-to-the-left.png' %}" class="icons"></a>
-                </span>
-
-                    <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page
-                        {{book.current_page}} of
-                        {{book.last_page_number}}</a>
-
-                    <span class="{% if book.current_page < book.last_page_number %} visible {% else %} invisible {% endif %}">
-                <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page"><img src="{% static 'images/icons/arrow-point-to-right.png' %}" class="icons"></a>
-                <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page"><img src="{% static 'images/icons/navigate-to-end.png' %}" class="icons"></a>
-                </span>
-            </div>
-        </div>
-        <div class="col-lg-3 pagination dropdown float-right">
-            Show
-            <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false">
-                {{current_page_size}}
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="/changePageSize/{{book.id}}/50">50</a>
-                <a class="dropdown-item" href="/changePageSize/{{book.id}}/55">55</a>
-                <a class="dropdown-item" href="/changePageSize/{{book.id}}/60">60</a>
-                <a class="dropdown-item" href="/changePageSize/{{book.id}}/65">65</a>
-                <a class="dropdown-item" href="/changePageSize/{{book.id}}/70">70</a>
-                <a class="dropdown-item" href="/changePageSize/{{book.id}}/75">75</a>
-            </div>
-            lines per page</div>
+<div class="pagination w-100">
+    <div class="float-left">
+        <a href="/" class="text-dark"><img src="{% static 'images/icons/previous.png' %}" class="icons"> Go back.</a>
     </div>
-    <div class="card page">
-        <div class="card-body">
-            <p class="card-text">{{ content }}</p>
+    <div class="dropdown float-right">
+        Show
+        <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
+            {{current_page_size}}
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/changePageSize/{{book.id}}/50">50</a>
+            <a class="dropdown-item" href="/changePageSize/{{book.id}}/55">55</a>
+            <a class="dropdown-item" href="/changePageSize/{{book.id}}/60">60</a>
+            <a class="dropdown-item" href="/changePageSize/{{book.id}}/65">65</a>
+            <a class="dropdown-item" href="/changePageSize/{{book.id}}/70">70</a>
+            <a class="dropdown-item" href="/changePageSize/{{book.id}}/75">75</a>
         </div>
+        lines per page
     </div>
-    <div class="center">
-        <div class="pagination">
+</div>
+<div class="card page">
+<div class="card-body">
+<p class="card-text">{{ content }}</p>
+</div>
+</div>
+<div class="center">
+    <div class="pagination">
         <span class="{% if book.current_page > 1 %} visible {% else %} invisible {% endif %}">
-            <a href="/book/{{book.id}}/page/1" title="Go to first page"><img src="{% static 'images/icons/navigate-arrow-button-to-beginning.png' %}" class="icons"></a>
-            <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page"><img src="{% static 'images/icons/arrowhead-thin-outline-to-the-left.png' %}" class="icons"></a>
+            <a href="/book/{{book.id}}/page/1" title="Go to first page"><img
+                    src="{% static 'images/icons/navigate-arrow-button-to-beginning.png' %}" class="icons"></a>
+            <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page"><img
+                    src="{% static 'images/icons/arrowhead-thin-outline-to-the-left.png' %}" class="icons"></a>
         </span>
 
-            <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page
-                {{book.current_page}} of
-                {{book.last_page_number}}</a>
+        <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page
+            {{book.current_page}} of
+            {{book.last_page_number}}</a>
 
-            <span class="{% if book.current_page < book.last_page_number %} visible {% else %} invisible {% endif %}">
-        <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page"><img src="{% static 'images/icons/arrow-point-to-right.png' %}" class="icons"></a>
-        <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page"><img src="{% static 'images/icons/navigate-to-end.png' %}" class="icons"></a>
+        <span class="{% if book.current_page < book.last_page_number %} visible {% else %} invisible {% endif %}">
+        <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page"><img
+                src="{% static 'images/icons/arrow-point-to-right.png' %}" class="icons"></a>
+        <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page"><img
+                src="{% static 'images/icons/navigate-to-end.png' %}" class="icons"></a>
         </span>
-        </div>
     </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
 {% endblock %}

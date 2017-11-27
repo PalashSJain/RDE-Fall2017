@@ -87,10 +87,6 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #f8f9fa;
 }
 
-.row {
-    padding-bottom: 30px;
-}
-
 .pagination {
     display: inline-block;
     font-size: medium;
@@ -141,11 +137,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 20px;
 }
 
-/*.navbar-brand{*/
-    /*font-family: 'Comfortaa', cursive;*/
-    /*letter-spacing: 1.5px;*/
-/*}*/
-
-.card-text {
-    font-family: 'Libre Baskerville', serif;
+.navbar-brand{
+    font-family: 'Comfortaa', cursive;
+    letter-spacing: 1.5px;
 }

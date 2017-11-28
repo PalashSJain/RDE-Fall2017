@@ -40,42 +40,6 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-/*
- * Sidebar
- */
-
-.sidebar {
-    position: fixed;
-    top: 51px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    max-width: 20%;
-}
-
-/*.sidebar .nav {*/
-    /*margin-bottom: 20px;*/
-/*}*/
-
-/*.sidebar .nav-item {*/
-    /*width: 100%;*/
-/*}*/
-
-/*.sidebar .nav-item + .nav-item {*/
-    /*margin-left: 0;*/
-/*}*/
-
-/*.sidebar .nav-link {*/
-    /*border-radius: 0;*/
-/*}*/
-
-.content {
-    max-width: 80%;
-}
-
 .footer {
     position: absolute;
     z-index: 1000;
@@ -156,4 +120,13 @@ input[type=number]::-webkit-outer-spin-button {
 
 .bg-light{
     overflow: hidden;
+}
+
+@media (max-width: 767px){
+    .left {
+        position: relative;
+    }
+    .fixed-top{
+        position: absolute;
+    }
 }

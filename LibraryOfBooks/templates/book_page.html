@@ -1,36 +1,41 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block above-sidebar %}
+    <div class="pagination">
+        <div class="float-right">
+            <a href="/" class="text-dark"><img src="{% static 'images/icons/previous.png' %}" class="icons"> Go back.</a>
+        </div>
+    </div>
+{% endblock %}
+
 {% block sidebar %}
-<h3>{{ book.title }}</h3>
-<h5 class="card-subtitle mb-2">{{book.author}}</h5>
-<hr>
-{% if book.language %}
-<div class="form-group">
-    <label for="bookLanguage">Language:</label>
-    <strong id="bookLanguage">{{ book.language }}</strong>
-</div>
-{% endif %}
-{% if book.release_date %}
-<div class="form-group">
-    <label for="bookReleaseDate">Released On:</label>
-    <strong id="bookReleaseDate">{{ book.release_date }}</strong>
-</div>
-{% endif %}
-{% if book.last_updated %}
-<div class="form-group">
-    <label for="bookLastUpdatedOn">Last Updated On:</label>
-    <strong id="bookLastUpdatedOn">{{ book.last_updated }}</strong>
-</div>
-{% endif %}
+    <h2>{{ book.title }}</h2>
+    <h5 class="card-subtitle mb-2">{{book.author}}</h5>
+    <hr>
+    {% if book.language %}
+    <div class="form-group">
+        <label for="bookLanguage">Language:</label>
+        <strong id="bookLanguage">{{ book.language }}</strong>
+    </div>
+    {% endif %}
+    {% if book.release_date %}
+    <div class="form-group">
+        <label for="bookReleaseDate">Released On:</label>
+        <strong id="bookReleaseDate">{{ book.release_date }}</strong>
+    </div>
+    {% endif %}
+    {% if book.last_updated %}
+    <div class="form-group">
+        <label for="bookLastUpdatedOn">Last Updated On:</label>
+        <strong id="bookLastUpdatedOn">{{ book.last_updated }}</strong>
+    </div>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
 <div class="pagination w-100">
-    <div class="float-left">
-        <a href="/" class="text-dark"><img src="{% static 'images/icons/previous.png' %}" class="icons"> Go back.</a>
-    </div>
-    <div class="dropdown float-right">
+    <div class="dropdown float-left">
         Show
         <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"
                 aria-haspopup="true"
@@ -47,31 +52,58 @@
         </div>
         lines per page
     </div>
+    <div class="float-right">
+        {% if book.current_page > 1 %}
+        <span>
+            <a href="/book/{{book.id}}/page/1" title="Go to first page"><img
+                    src="{% static 'images/icons/navigate-arrow-button-to-beginning.png' %}" class="icons"></a>
+            <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page"><img
+                    src="{% static 'images/icons/arrowhead-thin-outline-to-the-left.png' %}" class="icons"></a>
+        </span>
+        {% endif %}
+
+        <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page
+            {{book.current_page}} of
+            {{book.last_page_number}}</a>
+
+        {% if book.current_page < book.last_page_number %}
+        <span>
+        <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page"><img
+                src="{% static 'images/icons/arrow-point-to-right.png' %}" class="icons"></a>
+        <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page"><img
+                src="{% static 'images/icons/navigate-to-end.png' %}" class="icons"></a>
+        </span>
+        {% endif %}
+    </div>
 </div>
 <div class="card page">
 <div class="card-body">
 <p class="card-text">{{ content }}</p>
 </div>
 </div>
-<div class="center">
+<div class="float-right">
     <div class="pagination">
-        <span class="{% if book.current_page > 1 %} visible {% else %} invisible {% endif %}">
+        {% if book.current_page > 1 %}
+        <span>
             <a href="/book/{{book.id}}/page/1" title="Go to first page"><img
                     src="{% static 'images/icons/navigate-arrow-button-to-beginning.png' %}" class="icons"></a>
             <a href="/book/{{book.id}}/page/{{book.current_page|add:-1}}" title="Go to previous page"><img
                     src="{% static 'images/icons/arrowhead-thin-outline-to-the-left.png' %}" class="icons"></a>
         </span>
+        {% endif %}
 
         <a href="#" class="active" title="You are currently on page {{book.current_page}}">Page
             {{book.current_page}} of
             {{book.last_page_number}}</a>
 
-        <span class="{% if book.current_page < book.last_page_number %} visible {% else %} invisible {% endif %}">
+        {% if book.current_page < book.last_page_number %}
+        <span>
         <a href="/book/{{book.id}}/page/{{book.current_page|add:1}}" title="Go to next page"><img
                 src="{% static 'images/icons/arrow-point-to-right.png' %}" class="icons"></a>
         <a href="/book/{{book.id}}/page/{{book.last_page_number }}" title="Go to last page"><img
                 src="{% static 'images/icons/navigate-to-end.png' %}" class="icons"></a>
         </span>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

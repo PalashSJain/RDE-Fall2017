@@ -177,3 +177,9 @@ input[type=number]::-webkit-outer-spin-button {
         column-count: 1;
     }
 }
+
+@media (max-width: 453px){
+    #footer {
+        overflow: inherit;
+    }
+}

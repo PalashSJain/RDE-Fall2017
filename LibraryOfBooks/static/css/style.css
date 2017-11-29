@@ -166,12 +166,6 @@ input[type=number]::-webkit-outer-spin-button {
     }
 }
 
-/*@media (max-width: 767px) {*/
-    /*.fixed-top {*/
-        /*position: absolute;*/
-    /*}*/
-/*}*/
-
 @media (max-width: 560px) {
     .card-columns {
         column-count: 1;

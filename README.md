@@ -9,3 +9,4 @@ Technologies used:
 4. Bootstrap 4
 5. JavaScript
 6. JQuery
+7. MySQL

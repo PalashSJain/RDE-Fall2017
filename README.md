@@ -1,5 +1,7 @@
 # RDE-Fall2017
 
+http://rde.org/CodingChallenge/
+
 > The goal of this coding challenge is to create a web application which will allow its users to navigate through a library of books and choose one to open and start reading. The book library should be easy to navigate through and the textual content of the books displayed with readability in mind.
 
 Technologies used:
